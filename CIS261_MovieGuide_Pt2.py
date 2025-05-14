@@ -1,35 +1,44 @@
 # Course CIS261 Week 6 lab 2 MovieGuide pt2
 # Emma Kailani Tirado 05/13/2025
 
-MOVIE_FILE = 'movies.txt'
+# Create a new file named 'movie.txt' and write the 3 movies into it
+FILENAME = 'movies.txt'
 
-def
+# write
+def write_movies(movies): 
+    with open(FILENAME, "w") as file:
+        for movie in movies:
+            file.write(f"{movie}\n")
 
-def display_movies(movie_list):
-    print("\nMovie Titles: ")
+#read
+def read_movies():
+    movies = []
+    with open (FILENAME) as file:
+        for line in file:
+            line = line.replace("\n", "")
+            movies.append(line)
+    return movies
+
+#list
+def list_movies(movies):
     for i, movie in enumerate(movies_list, start=1):
         print(f"{i}. {movie}")
 
-# append() function
+# add /append() function
 def add_movie(movies):
     movie_name = input("Name: ")
-    movies.append(movie_name)
+    movies.append(movie)
+    write_movies(movies)
     print(f"{movie_name} was added. \n")
 
-
-# pop() function
+# delete /pop() function
 def del_movie(movies):
-    try:
-        number = int(input("Number: "))
-        if 1 <= number <= len(movies):
-            removed = movies.pop(number - 1)
-            print(f"{removed} was deleted.\n")
-        else:
-            print("Invalid movie number.\n")
-    except ValueError:
-        print("Please enter a valid number.\n")
-#Not a valid command please try again
-
+    index = int(input("Number: "))
+    if index < 1 or index > len(movies):
+        print("Invalid movie number.\n")
+    else:
+        movie = movies.pop(index -1)
+        write_movies(movies)
 
 def display_menu():
     print("\nThe Movie List Program\n")
@@ -41,10 +50,8 @@ def display_menu():
 
 
 def main():
-    movie_file = "movies.txt" #["Monty Python and the Holy Grail", "On the Waterfront", "Cat on a Hot Tin Roof"]
-    movie_list = populate_list(movie_file)
-
-    #Create the while loop for commands
+    display_menu()
+    movies = read_movies()
     while True:
         command = input("Command: ").lower()
         if command == "list":
