@@ -3,16 +3,12 @@
 
 MOVIE_FILE = 'movies.txt'
 
-def display_menu():
-        print("\nThe Movie List Program\n")
-    print("COMMAND MENU")
-    print("list - Lists all movies")
-    print("add - Add a movie")
-    print("del - Delete a movie")
-    print("exit - Exit program\n")
+def
 
 def display_movies(movie_list):
     print("\nMovie Titles: ")
+    for i, movie in enumerate(movies_list, start=1):
+        print(f"{i}. {movie}")
 
 # append() function
 def add_movie(movies):
@@ -34,11 +30,19 @@ def del_movie(movies):
         print("Please enter a valid number.\n")
 #Not a valid command please try again
 
-# add movies to list
+
+def display_menu():
+    print("\nThe Movie List Program\n")
+    print("COMMAND MENU")
+    print("list - Lists all movies")
+    print("add - Add a movie")
+    print("del - Delete a movie")
+    print("exit - Exit program\n")
+
+
 def main():
     movie_file = "movies.txt" #["Monty Python and the Holy Grail", "On the Waterfront", "Cat on a Hot Tin Roof"]
     movie_list = populate_list(movie_file)
-
 
     #Create the while loop for commands
     while True:
