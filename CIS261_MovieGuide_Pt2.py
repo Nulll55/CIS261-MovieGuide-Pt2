@@ -21,13 +21,13 @@ def read_movies():
 
 #list
 def list_movies(movies):
-    for i, movie in enumerate(movies_list, start=1):
+    for i, movie in enumerate(movies, start=1):
         print(f"{i}. {movie}")
 
 # add /append() function
 def add_movie(movies):
     movie_name = input("Name: ")
-    movies.append(movie)
+    movies.append(movies)
     write_movies(movies)
     print(f"{movie_name} was added. \n")
 
