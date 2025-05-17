@@ -10,17 +10,17 @@ def write_movies(movies):
         for movie in movies:
             file.write(f"{movie}\n")
 
-#read
+# Read
 def read_movies():
-    movies = []
-    with open (FILENAME) as file:
-        for line in file:
-            line = line.replace("\n", "")
-            movies.append(line)
-    return movies
+    try:
+        with open(FILENAME, 'r') as file:
+            return [line.strip() for line in file]
+    except FileNotFoundError:
+        return none
 
 #list
 def list_movies(movies):
+    print("\nThe Movie List")
     for i, movie in enumerate(movies, start=1):
         print(f"{i}. {movie}")
 
@@ -51,7 +51,7 @@ def display_menu():
 
 def main():
     display_menu()
-    movies = read_movies()
+    movies = read_movies
     while True:
         command = input("Command: ").lower()
         if command == "list":
