@@ -22,23 +22,27 @@ def read_movies():
 def list_movies(movies):
     print("\nThe Movie List")
     for i, movie in enumerate(movies, start=1):
-        print(f"{i}. {movie}")
+        print(f"{i}. {movie}\n")
 
 # add /append() function
 def add_movie(movies):
     movie_name = input("Name: ")
-    movies.append(movies)
+    movies.append(movie_name)
     write_movies(movies)
     print(f"{movie_name} was added. \n")
 
 # delete /pop() function
 def del_movie(movies):
-    index = int(input("Number: "))
-    if index < 1 or index > len(movies):
-        print("Invalid movie number.\n")
-    else:
-        movie = movies.pop(index -1)
-        write_movies(movies)
+    try:
+        index = int(input("Number: "))
+        if index < 1 or index > len(movies):
+            print("Invalid movie number.\n")
+        else:
+            movie = movies.pop(index -1)
+            write_movies(movies)
+            print(f"\n{movie} was deleted. \n")
+    except FileNotFoundError:
+        return none
 
 def display_menu():
     print("\nThe Movie List Program\n")
@@ -48,10 +52,15 @@ def display_menu():
     print("del - Delete a movie")
     print("exit - Exit program\n")
 
-
 def main():
+    movies = read_movies()
+    if movies is None:
+        print("\nFile not found. Starting with an empty list." )
+        movies = []
+
     display_menu()
-    movies = read_movies
+
+
     while True:
         command = input("Command: ").lower()
         if command == "list":
